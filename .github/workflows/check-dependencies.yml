@@ -14,4 +14,4 @@ jobs:
           path: node_modules
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Check available dependencies
-        uses: ./.github/actions/deps-action
+        uses: Daniely2564/deps-manage-action
