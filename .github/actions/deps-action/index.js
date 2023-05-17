@@ -1,11 +1,12 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
 const exec = require("@actions/exec");
-const execSync = require("./libs/execSync");
+const DepsBot = require("./libs/DepsBot");
 
 async function run() {
-  const list = await execSync(`npm view @arcgis/core versions`);
-  core.notice(`echo '${list}'`);
+  const depsBot = new DepsBot();
+  const list = await depsBot.getVersionsList("@arcgis/core");
+  core.notice(`echo '${__dirname}'`);
 }
 
 run();
