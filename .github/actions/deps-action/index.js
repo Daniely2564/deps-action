@@ -5,7 +5,7 @@ const execSync = require("./libs/execSync");
 
 async function run() {
   const list = await execSync(`npm view @arcgis/core versions`);
-  core.notice(list);
+  core.notice(`echo '${list}'`);
 }
 
 run();
