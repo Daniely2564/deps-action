@@ -1,5 +1,6 @@
 const execSync = require("./execSync");
 const fs = require("fs");
+const yml = require("js-yaml");
 
 class DepsBot {
   constructor() {}
@@ -15,9 +16,16 @@ class DepsBot {
     }
   }
 
-  readPackageJson() {
-    console.log(__dirname);
+  readInConfig() {
+    // By default the configuration is located at .github/deps-action.yml
+    const configurationYML = (obj = yml.load(
+      fs.readFileSync("./.github/deps-action.yml", { encoding: "utf-8" })
+    ));
+
+    return configurationYML;
   }
+
+  readPackageJson() {}
 }
 
 module.exports = DepsBot;
