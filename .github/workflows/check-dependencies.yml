@@ -1,0 +1,17 @@
+name: Check Available Dependencies
+on:
+  workflow_dispatch:
+jobs:
+  check-available-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Code
+        uses: actions/checkout@v3
+      - name: Cache Dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Check available dependencies
+        uses: ./.github/actions/deps-action

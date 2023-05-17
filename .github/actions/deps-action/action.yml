@@ -1,0 +1,5 @@
+name: deps-action
+description: Check available dependencies from provided configuration
+runs:
+  using: node16
+  main: index.js
